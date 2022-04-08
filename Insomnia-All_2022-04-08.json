@@ -1,0 +1,253 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2022-04-08T19:22:34.671Z",
+  "__export_source": "insomnia.desktop.app:v2022.2.1",
+  "resources": [
+    {
+      "_id": "req_4ea3e3cdeb19416bbd73fe70bed6ef85",
+      "parentId": "wrk_28c5b5acec3a425994bd0dd7a13f0271",
+      "modified": 1649444691014,
+      "created": 1649444691014,
+      "url": "",
+      "name": "New Request",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1649444691014,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "wrk_28c5b5acec3a425994bd0dd7a13f0271",
+      "parentId": null,
+      "modified": 1649444691000,
+      "created": 1649444691000,
+      "name": "New Document",
+      "description": "",
+      "scope": "design",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_b70d94d299ec413895ff1ea70aa81705",
+      "parentId": "fld_bb51f38c3d024a98a59ec49742388940",
+      "modified": 1649445293107,
+      "created": 1649444762841,
+      "url": "{{ _.localhost }}",
+      "name": "Create",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/graphql",
+        "text": "{\"query\":\"mutation {\\n\\tcreateOneUser(\\n\\t\\tinput: {user:{\\n\\t\\t\\tname: \\\"Clark Kent\\\",\\n\\t\\t\\tphone: \\\"(11)97651-8765\\\",\\n\\t\\t\\temail: \\\"clarkkent@gmail.com\\\"\\n\\t\\t}}\\n\\t)\\n\\t{\\n\\t\\tid,name,phone,email\\n\\t}\\n}\"}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_964f1f1665dc44ecaa60c5a34d51815c"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1649444762842,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_bb51f38c3d024a98a59ec49742388940",
+      "parentId": "wrk_28c5b5acec3a425994bd0dd7a13f0271",
+      "modified": 1649444738106,
+      "created": 1649444738106,
+      "name": "User",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1649444738106,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_0c85dfc853f74dcd8a3ac7a7c016ccaa",
+      "parentId": "fld_bb51f38c3d024a98a59ec49742388940",
+      "modified": 1649445623374,
+      "created": 1649445059450,
+      "url": "{{ _.localhost }}",
+      "name": "List",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/graphql",
+        "text": "{\"query\":\"{\\n\\tusers{\\n\\t\\t\\tnodes{\\n\\t\\t\\t\\tid\\n\\t\\t\\t\\tname\\n\\t\\t\\t\\tphone\\n\\t\\t\\t\\temail\\n\\t\\t\\t}\\n\\t\\t}\\n\\t}\"}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_964f1f1665dc44ecaa60c5a34d51815c"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1649444726928,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_68d06ab822a84f008e3dadfe52d4f7ff",
+      "parentId": "fld_bb51f38c3d024a98a59ec49742388940",
+      "modified": 1649445606134,
+      "created": 1649445122691,
+      "url": "{{ _.localhost }}",
+      "name": "List With Filter",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/graphql",
+        "text": "{\"query\":\"{\\n\\tusers(filter: {\\n\\t\\tname: {\\n\\t\\t\\tiLike: \\\"%Daniel%\\\"\\n\\t\\t}\\n\\t}){\\n\\t\\tnodes{\\n\\t\\t\\t\\tid\\n\\t\\t\\t\\tname\\n\\t\\t\\t\\tphone\\n\\t\\t\\t\\temail\\n\\t\\t\\t}\\n\\t\\t}\\n\\t}\\n\"}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_964f1f1665dc44ecaa60c5a34d51815c"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1649444708971,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_7b902a1a22a34ac4ba63e47bde88186d",
+      "parentId": "fld_bb51f38c3d024a98a59ec49742388940",
+      "modified": 1649445588962,
+      "created": 1649445213325,
+      "url": "{{ _.localhost }}",
+      "name": "List With Ordering",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/graphql",
+        "text": "{\"query\":\"{\\n\\tusers(\\n\\t\\tsorting: {\\n\\t\\t\\tfield: name direction: ASC\\n\\t\\t}\\n\\t){\\n\\t\\tnodes{\\n\\t\\t\\t\\tid\\n\\t\\t\\t\\tname\\n\\t\\t\\t\\tphone\\n\\t\\t\\t\\temail\\n\\t\\t\\t}\\n\\t\\t}\\n\\t}\\n\"}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_964f1f1665dc44ecaa60c5a34d51815c"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1649444699992.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_cbb6633710e74b559ef26f5a708a7d12",
+      "parentId": "fld_bb51f38c3d024a98a59ec49742388940",
+      "modified": 1649445702428,
+      "created": 1649445324959,
+      "url": "{{ _.localhost }}",
+      "name": "List With Pagination",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/graphql",
+        "text": "{\"query\":\"{\\n\\tusers(\\n\\t\\tpaging: {\\n\\t\\t\\toffset: 0\\n\\t\\t\\tlimit: 3\\n\\t\\t}\\n\\t){\\n\\t\\t\\tnodes{\\n\\t\\t\\t\\tid\\n\\t\\t\\t\\tname\\n\\t\\t\\t\\tphone\\n\\t\\t\\t\\temail\\n\\t\\t\\t}\\n\\t\\t}\\n\\t}\"}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_964f1f1665dc44ecaa60c5a34d51815c"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1649444695503.25,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_b587dd3a13696b4c7095064e369ebba8cf144036",
+      "parentId": "wrk_28c5b5acec3a425994bd0dd7a13f0271",
+      "modified": 1649444852214,
+      "created": 1649444691011,
+      "name": "Base Environment",
+      "data": { "localhost": "localhost:3000/graphql" },
+      "dataPropertyOrder": { "&": ["localhost"] },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1649444691011,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_b587dd3a13696b4c7095064e369ebba8cf144036",
+      "parentId": "wrk_28c5b5acec3a425994bd0dd7a13f0271",
+      "modified": 1649444691013,
+      "created": 1649444691013,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_95b3daf7c9df47b7ae80de0be9075cac",
+      "parentId": "wrk_28c5b5acec3a425994bd0dd7a13f0271",
+      "modified": 1649445729249,
+      "created": 1649444691008,
+      "fileName": "Task Manager API",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    },
+    {
+      "_id": "uts_bb87564208954f73b8005d6b28b5456d",
+      "parentId": "wrk_28c5b5acec3a425994bd0dd7a13f0271",
+      "modified": 1649444691015,
+      "created": 1649444691015,
+      "name": "Example Test Suite",
+      "_type": "unit_test_suite"
+    }
+  ]
+}
