@@ -15,7 +15,7 @@ const graphql_1 = require("@nestjs/graphql");
 let UpdateUserInput = class UpdateUserInput extends (0, graphql_1.PartialType)(create_user_input_1.CreateUserInput) {
 };
 __decorate([
-    (0, graphql_1.Field)(() => String),
+    (0, graphql_1.Field)(() => graphql_1.ID, { nullable: true }),
     __metadata("design:type", String)
 ], UpdateUserInput.prototype, "id", void 0);
 UpdateUserInput = __decorate([

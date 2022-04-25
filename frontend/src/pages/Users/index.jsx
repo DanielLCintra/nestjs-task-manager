@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useLazyQuery, useMutation } from "@apollo/client";
-import { GET_USERS_QUERY, CREATE_USER } from "../../graphql/queries";
+import {
+  GET_USERS_QUERY,
+  CREATE_USER,
+  UPDATE_USER,
+  DELETE_USER,
+} from "../../graphql/queries";
+import "./styles.css";
 
 const Users = () => {
   const [user, setUser] = useState({ name: "", phone: "", email: "" });
@@ -10,12 +16,39 @@ const Users = () => {
 
   //data, loading, error
   const [createOneUser, createPayload] = useMutation(CREATE_USER);
+  const [updateOneUser, updatePayload] = useMutation(UPDATE_USER);
+  const [deleteOneUser, deletePayload] = useMutation(DELETE_USER);
 
   const createUser = () => {
     createOneUser({ variables: { ...user } });
     setTimeout(() => {
       getUsers();
       setUser({ name: "", phone: "", email: "" });
+    }, 500);
+  };
+
+  const updateUser = () => {
+    console.log("user", user);
+    updateOneUser({
+      variables: {
+        id: user.id,
+        name: user.name,
+        phone: user.phone,
+        email: user.email,
+      },
+    });
+    setUser({ name: "", phone: "", email: "" });
+  };
+
+  const deleteUser = (id) => {
+    deleteOneUser({
+      variables: {
+        id,
+      },
+    });
+
+    setTimeout(() => {
+      getUsers();
     }, 500);
   };
 
@@ -28,11 +61,31 @@ const Users = () => {
       <h1>Users</h1>
       <div className="users-list">
         {data ? (
-          <ul>
-            {data.users.nodes.map((user) => (
-              <li key={user.id}>{user.name}</li>
-            ))}
-          </ul>
+          <table>
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>E-mail</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.users.nodes.map((user) => (
+                <tr key={user.id}>
+                  <td>{user.id}</td>
+                  <td>{user.name} </td>
+                  <td>{user.phone} </td>
+                  <td>{user.email}</td>
+                  <td>
+                    <button onClick={() => setUser(user)}>Editar</button>
+                    <button onClick={() => deleteUser(user.id)}>Excluir</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         ) : error ? (
           <h1>An error was found</h1>
         ) : (
@@ -72,9 +125,8 @@ const Users = () => {
             />
           </div>
 
-          <button onClick={() => createUser()}>
-            {(!createPayload.loading || createPayload.data) && "Save"}
-            {createPayload.loading && "Submitting..."}
+          <button onClick={() => (!!user.id ? updateUser() : createUser())}>
+            {!!user.id ? "Update" : "Save"}
           </button>
         </div>
       </div>

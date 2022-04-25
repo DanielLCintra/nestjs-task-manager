@@ -127,7 +127,7 @@ input UpdateOneUserInput {
 
 input UpdateUserInput {
   email: String
-  id: String!
+  id: ID
   name: String
   phone: String
 }

@@ -25,3 +25,29 @@ export const CREATE_USER = gql`
     }
   }
 `;
+
+export const UPDATE_USER = gql`
+  mutation UpdateOneUser(
+    $id: ID!
+    $name: String!
+    $phone: String!
+    $email: String!
+  ) {
+    updateOneUser(
+      input: { id: $id, update: { name: $name, phone: $phone, email: $email } }
+    ) {
+      id
+      name
+      phone
+      email
+    }
+  }
+`;
+
+export const DELETE_USER = gql`
+  mutation DeleteOneUser($id: ID!) {
+    deleteOneUser(input: { id: $id }) {
+      id
+    }
+  }
+`;
